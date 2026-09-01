@@ -1,85 +1,160 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Mateen Ul Hassan | Data Engineer</title>
-<link rel="stylesheet" href="style.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Mateen Ul Hassan | Production Data & Reliability Engineer</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+
 <header>
-<div class="logo">Mateen<span>.</span></div>
-<nav>
-<a href="#about">About</a>
-<a href="#work">Work</a>
-<a href="#skills">Skills</a>
-</nav>
+    <div class="logo">Mateen<span>.</span></div>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience & Engineering Impact</a>
+        <a href="#projects">Featured Projects</a>
+        <a href="#skills">Skills</a>
+    </nav>
 </header>
 
-<section class="hero">
-<h1>Building reliable <span>cloud data platforms</span></h1>
-<p>Data Engineer focused on healthcare data reliability, ETL pipelines, data quality, Azure, Snowflake, Databricks, Spark, Python and SQL.</p>
-<a class="btn" href="assets/resume.pdf">Download Resume</a>
+<section class="hero"> 
+    <h1>Building fault-tolerant <span>cloud data pipelines</span> & proactive quality engines</h1> 
+    <p>
+        Associate Data Engineer specializing in Azure, Snowflake, Databricks, and Mage AI. I build end-to-end ELT/ETL architectures, automate anomaly detection, optimize SQL workloads, and stop corrupted data before it ever hits production ops.
+    </p>
+    <br>
+    <a href="#experience" class="btn">Explore Engineering Work</a>
 </section>
 
 <section id="about">
-<h2>About Me</h2>
-<p>I build and support data systems where correctness matters. My work focuses on data validation, anomaly detection, cloud pipelines, warehouse workflows and production reliability.</p>
+    <h2>About Me</h2>
+    <p>
+        I specialize in the dirty, high-stakes side of data engineering: raw data validation, pipeline fault tolerance, warehouse optimization, and system reliability. Currently engineering cloud data workflows for production healthcare environments, I work directly with client technical teams to troubleshoot pipeline silent failures, eliminate duplicate shifts, refactor legacy queries, and enforce data quality at the raw ingestion layer. Whether orchestrating scalable spark jobs in Databricks or writing custom dbt transformations in Snowflake, I focus on building systems that don't break at 3 AM.
+    </p>
 </section>
 
-<section id="work">
-<h2>Engineering Work</h2>
+<section id="experience">
+    <h2>Engineering Work & High-Impact Case Studies</h2>
 
-<div class="grid">
+    <div class="grid">
 
-<div class="card">
-<h3>Labor Data Validation</h3>
-<p>Worked with Added, Modified and Deleted shift events. Identified logical anomalies such as modified records without previous additions, unchanged modifications and deleted records still appearing downstream.</p>
-<p>Solutions included lifecycle validation, business-key tracking, exception reporting and quarantine instead of silently changing source data.</p>
-</div>
+        <div class="card">
+            <h3>Healthcare Data Reliability & Early Anomaly Detection Engine</h3>
+            <p><strong>Stack:</strong> Snowflake, Mage AI, Azure DevOps, DataOps Studio UI</p>
+            <p>
+                Acted as Data Reliability Engineer managing production healthcare streams. Discovered that low-quality data was propagating downstream and disrupting Clinical Operations (Clin-Ops) teams.
+            </p>
+            <p>
+                <strong>Architecture & Impact:</strong> Deep-dived into the raw layer (IC0 architecture) and refactored core Snowflake analytical views. Implemented automated rule assertions in IC0 that flag structural anomalies, missing parent keys, and timestamp collisions at the raw stage. This proactive layer isolated bad batches early, preventing operational outages for downstream clinical dashboards. Managed continuous integration using Azure DevOps and DataOps Studio UI for release orchestration.
+            </p>
+        </div>
 
-<div class="card">
-<h3>Dynamic Azure ETL Pipeline</h3>
-<p>Built automated workflows using ADLS, Azure Data Factory, Databricks and SQL Server.</p>
-<p>Pipeline handled file validation, transformations, processed files, archives and quarantine paths.</p>
-</div>
+        <div class="card">
+            <h3>Complex Labor Shift Validation & Lifecycle Auditing Engine</h3>
+            <p><strong>Stack:</strong> Python, SQL, Automated Quarantine Workflows</p>
+            <p>
+                Engineered custom business logic validation for labor shift tracking datasets containing asynchronous <code>ADDED</code>, <code>MODIFIED</code>, and <code>DELETED</code> state change events.
+            </p>
+            <p>
+                <strong>Logic Anomalies Solved & Human-Centric Remediation:</strong>
+                <ul>
+                    <li><em>Orphan Modifications:</em> Flagged <code>MODIFIED</code> records that had no prior baseline <code>ADDED</code> record. Built a reconciliation queue that routes orphan records to an audit table while auto-generating a synthetic baseline record using historical logs.</li>
+                    <li><em>Ghost Updates:</em> Intercepted records marked as <code>MODIFIED</code> despite identical timestamps and payload data. Implemented hashing comparison algorithms to drop zero-change payload writes, reducing storage bloat.</li>
+                    <li><em>Zombie Shifts:</em> Detected active operational records persisting after explicit <code>DELETED</code> events. Enforced strict tombstone record constraints that cascade-soft-delete downstream entries and issue alerts to operation managers.</li>
+                </ul>
+            </p>
+        </div>
 
-<div class="card">
-<h3>SQL Optimization</h3>
-<p>Assisted with stored procedure improvements where duplicate records made latest-record selection difficult. Improved ranking logic and deterministic record selection.</p>
-</div>
+        <div class="card">
+            <h3>Event-Driven Automated Ingestion Pipeline</h3>
+            <p><strong>Stack:</strong> Azure Data Factory (ADF), Databricks, PySpark, ADLS Gen2, SQL Server</p>
+            <p>
+                Designed and deployed a dynamic, event-driven cloud ELT/ETL ingestion architecture triggered automatically upon file arrival inside Azure Data Lake Storage (ADLS Gen2).
+            </p>
+            <p>
+                <strong>Pipeline Mechanics:</strong> Azure Data Factory monitors blob container events and fires off Databricks notebooks running PySpark. The notebooks dynamically match file metadata against validation schemas, standardizing field names on the fly. Successfully transformed files are moved to <code>/processed</code> and historical raw files to <code>/archive</code>. Corrupted or schema-mismatched files are automatically isolated into a <code>/quarantine</code> zone. Dynamically created target staging tables in SQL Server to maintain fully auditable, queryable raw tables.
+            </p>
+        </div>
 
-<div class="card">
-<h3>Healthcare Data Reliability</h3>
-<p>Worked with IC0 raw layer architecture and Snowflake anomaly detection views to identify healthcare data issues before reaching clinical operations.</p>
-</div>
+        <div class="card">
+            <h3>T-SQL Performance Tuning & Shift Deduplication</h3>
+            <p><strong>Stack:</strong> SQL Server, T-SQL, Partitioned Window Functions</p>
+            <p>
+                Assisted in refactoring legacy stored procedures responsible for assigning sequence numbers to incoming labor shift logs, which was failing due to duplicate records and race conditions.
+            </p>
+            <p>
+                <strong>Optimization Strategy:</strong> Redesigned ordering and partition strategies using T-SQL window functions (<code>ROW_NUMBER() OVER (PARTITION BY labor_id, shift_date ORDER BY updated_timestamp DESC)</code>). Resolved multi-record ambiguities by implementing secondary tie-breakers based on shift status hierarchy. Improved query performance, eliminated duplicate shift assignments, and stabilized downstream analytics.
+            </p>
+        </div>
 
-<div class="card">
-<h3>Analytics Engineering</h3>
-<p>Built dashboards using Power BI, transformed Excel data with Python, queried data using SQL and designed star schemas for better reporting.</p>
-</div>
+        <div class="card">
+            <h3>Analytics & BI Infrastructure (Gulabzai Group)</h3>
+            <p><strong>Stack:</strong> Python, Pandas, PostgreSQL/SQL, Power BI, Star Schema Modeling</p>
+            <p>
+                Transformed unorganized, raw operational CSV datasets into a structured, high-performance relational database and reporting system.
+            </p>
+            <p>
+                <strong>Execution:</strong> Wrote Python scripts utilizing Pandas for data cleaning, structural validation, and automated type coercion. Modeled and populated structured SQL tables, building a scalable Star Schema (Fact Sales and Dimension tables) optimized for analytical queries. Designed interactive Power BI dashboards tracking 10+ core operational KPIs, delivering clear visibility into sales trends and performance metrics.
+            </p>
+        </div>
 
-<div class="card">
-<h3>Production Data Engineering</h3>
-<p>Worked with Mage AI orchestration, Snowflake warehouse layers, Azure Data Factory ETL, Azure DevOps CI/CD and Data Ops Studio workflows.</p>
-</div>
+        <div class="card">
+            <h3>Direct Client Technical Collaboration</h3>
+            <p><strong>Stack:</strong> Azure DevOps, Agile Work-Item Tracking, Direct Client Stakeholder Management</p>
+            <p>
+                Worked closely with healthcare clients and cross-functional technical teams to bridge business requirements and production engineering solutions.
+            </p>
+            <p>
+                <strong>Engagement:</strong> Led technical updates, triaged real-time data incidents, gathered pipeline requirements, and coordinated multi-environment testing and deployment activities via Azure DevOps.
+            </p>
+        </div>
 
-</div>
+    </div>
+</section>
+
+<section id="projects">
+    <h2>Featured Open-Source Projects</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Cloud ELT Pipeline (Snowflake, dbt, Power BI)</h3>
+            <p>
+                Built a production-grade cloud ELT analytics stack. Raw data is loaded into Snowflake, transformed modularly using <strong>dbt</strong> (data build tool), and validated using automated dbt data assertion tests. Output models feed directly into Power BI to deliver clean, trusted business dashboards.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>AskMyDocs RAG Chatbot (Python, FAISS, Streamlit)</h3>
+            <p>
+                Developed an AI-powered document retrieval application. Uses Python to parse complex unstructured documentation, vector embeddings stored in a <strong>FAISS</strong> vector index for semantic context retrieval, and an interactive <strong>Streamlit</strong> interface for natural-language Q&A.
+            </p>
+        </div>
+
+    </div>
 </section>
 
 <section id="skills">
-<h2>Technical Skills</h2>
-<div class="skills">
-<span>Python</span><span>SQL</span><span>Azure</span>
-<span>ADF</span><span>ADLS</span><span>Snowflake</span>
-<span>Databricks</span><span>Spark</span><span>PySpark</span>
-<span>SQL Server</span><span>Git</span><span>Docker</span>
-<span>Power BI</span><span>Pandas</span><span>dbt</span>
-<span>RAG</span><span>FAISS</span><span>Streamlit</span>
-</div>
+    <h2>Technical Ecosystem</h2>
+    <div class="skills">
+        <span>Python</span><span>SQL</span><span>Bash</span>
+        <span>ETL / ELT</span><span>Data Modeling</span><span>Data Quality Engine</span>
+        <span>Azure Data Factory (ADF)</span><span>ADLS Gen2</span><span>Azure Synapse</span>
+        <span>AWS S3</span><span>Databricks</span><span>Apache Spark</span>
+        <span>PySpark</span><span>Spark SQL</span><span>Snowflake</span>
+        <span>SQL Server</span><span>PostgreSQL</span><span>GoogleSQL</span>
+        <span>Mage AI</span><span>dbt</span><span>Azure DevOps</span>
+        <span>Git</span><span>CI/CD</span><span>Docker</span>
+        <span>Power BI</span><span>Pandas</span><span>Datasite</span>
+        <span>RAG</span><span>FAISS</span><span>Streamlit</span>
+    </div>
 </section>
 
-<footer>© <span id="year"></span> Mateen Ul Hassan</footer>
+<footer>© <span id="year"></span> Mateen Ul Hassan | Designed for Global & Remote Data Engineering Roles</footer>
 
-<script src="script.js"></script>
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
