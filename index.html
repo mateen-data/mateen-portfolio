@@ -1,160 +1,90 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Mateen Ul Hassan | Production Data & Reliability Engineer</title>
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080f1e">
+  <meta name="description" content="Mateen Ul Hassan — Data Engineer building reliable cloud pipelines, data validation frameworks, and analytics platforms using Azure, Snowflake, Databricks and SQL.">
+  <title>Mateen Ul Hassan | Data Engineer</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<header>
-    <div class="logo">Mateen<span>.</span></div>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#experience">Experience & Engineering Impact</a>
-        <a href="#projects">Featured Projects</a>
-        <a href="#skills">Skills</a>
-    </nav>
-</header>
-
-<section class="hero"> 
-    <h1>Building fault-tolerant <span>cloud data pipelines</span> & proactive quality engines</h1> 
-    <p>
-        Associate Data Engineer specializing in Azure, Snowflake, Databricks, and Mage AI. I build end-to-end ELT/ETL architectures, automate anomaly detection, optimize SQL workloads, and stop corrupted data before it ever hits production ops.
-    </p>
-    <br>
-    <a href="#experience" class="btn">Explore Engineering Work</a>
-</section>
-
-<section id="about">
-    <h2>About Me</h2>
-    <p>
-        I specialize in the dirty, high-stakes side of data engineering: raw data validation, pipeline fault tolerance, warehouse optimization, and system reliability. Currently engineering cloud data workflows for production healthcare environments, I work directly with client technical teams to troubleshoot pipeline silent failures, eliminate duplicate shifts, refactor legacy queries, and enforce data quality at the raw ingestion layer. Whether orchestrating scalable spark jobs in Databricks or writing custom dbt transformations in Snowflake, I focus on building systems that don't break at 3 AM.
-    </p>
-</section>
-
-<section id="experience">
-    <h2>Engineering Work & High-Impact Case Studies</h2>
-
-    <div class="grid">
-
-        <div class="card">
-            <h3>Healthcare Data Reliability & Early Anomaly Detection Engine</h3>
-            <p><strong>Stack:</strong> Snowflake, Mage AI, Azure DevOps, DataOps Studio UI</p>
-            <p>
-                Acted as Data Reliability Engineer managing production healthcare streams. Discovered that low-quality data was propagating downstream and disrupting Clinical Operations (Clin-Ops) teams.
-            </p>
-            <p>
-                <strong>Architecture & Impact:</strong> Deep-dived into the raw layer (IC0 architecture) and refactored core Snowflake analytical views. Implemented automated rule assertions in IC0 that flag structural anomalies, missing parent keys, and timestamp collisions at the raw stage. This proactive layer isolated bad batches early, preventing operational outages for downstream clinical dashboards. Managed continuous integration using Azure DevOps and DataOps Studio UI for release orchestration.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Complex Labor Shift Validation & Lifecycle Auditing Engine</h3>
-            <p><strong>Stack:</strong> Python, SQL, Automated Quarantine Workflows</p>
-            <p>
-                Engineered custom business logic validation for labor shift tracking datasets containing asynchronous <code>ADDED</code>, <code>MODIFIED</code>, and <code>DELETED</code> state change events.
-            </p>
-            <p>
-                <strong>Logic Anomalies Solved & Human-Centric Remediation:</strong>
-                <ul>
-                    <li><em>Orphan Modifications:</em> Flagged <code>MODIFIED</code> records that had no prior baseline <code>ADDED</code> record. Built a reconciliation queue that routes orphan records to an audit table while auto-generating a synthetic baseline record using historical logs.</li>
-                    <li><em>Ghost Updates:</em> Intercepted records marked as <code>MODIFIED</code> despite identical timestamps and payload data. Implemented hashing comparison algorithms to drop zero-change payload writes, reducing storage bloat.</li>
-                    <li><em>Zombie Shifts:</em> Detected active operational records persisting after explicit <code>DELETED</code> events. Enforced strict tombstone record constraints that cascade-soft-delete downstream entries and issue alerts to operation managers.</li>
-                </ul>
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Event-Driven Automated Ingestion Pipeline</h3>
-            <p><strong>Stack:</strong> Azure Data Factory (ADF), Databricks, PySpark, ADLS Gen2, SQL Server</p>
-            <p>
-                Designed and deployed a dynamic, event-driven cloud ELT/ETL ingestion architecture triggered automatically upon file arrival inside Azure Data Lake Storage (ADLS Gen2).
-            </p>
-            <p>
-                <strong>Pipeline Mechanics:</strong> Azure Data Factory monitors blob container events and fires off Databricks notebooks running PySpark. The notebooks dynamically match file metadata against validation schemas, standardizing field names on the fly. Successfully transformed files are moved to <code>/processed</code> and historical raw files to <code>/archive</code>. Corrupted or schema-mismatched files are automatically isolated into a <code>/quarantine</code> zone. Dynamically created target staging tables in SQL Server to maintain fully auditable, queryable raw tables.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>T-SQL Performance Tuning & Shift Deduplication</h3>
-            <p><strong>Stack:</strong> SQL Server, T-SQL, Partitioned Window Functions</p>
-            <p>
-                Assisted in refactoring legacy stored procedures responsible for assigning sequence numbers to incoming labor shift logs, which was failing due to duplicate records and race conditions.
-            </p>
-            <p>
-                <strong>Optimization Strategy:</strong> Redesigned ordering and partition strategies using T-SQL window functions (<code>ROW_NUMBER() OVER (PARTITION BY labor_id, shift_date ORDER BY updated_timestamp DESC)</code>). Resolved multi-record ambiguities by implementing secondary tie-breakers based on shift status hierarchy. Improved query performance, eliminated duplicate shift assignments, and stabilized downstream analytics.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Analytics & BI Infrastructure (Gulabzai Group)</h3>
-            <p><strong>Stack:</strong> Python, Pandas, PostgreSQL/SQL, Power BI, Star Schema Modeling</p>
-            <p>
-                Transformed unorganized, raw operational CSV datasets into a structured, high-performance relational database and reporting system.
-            </p>
-            <p>
-                <strong>Execution:</strong> Wrote Python scripts utilizing Pandas for data cleaning, structural validation, and automated type coercion. Modeled and populated structured SQL tables, building a scalable Star Schema (Fact Sales and Dimension tables) optimized for analytical queries. Designed interactive Power BI dashboards tracking 10+ core operational KPIs, delivering clear visibility into sales trends and performance metrics.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Direct Client Technical Collaboration</h3>
-            <p><strong>Stack:</strong> Azure DevOps, Agile Work-Item Tracking, Direct Client Stakeholder Management</p>
-            <p>
-                Worked closely with healthcare clients and cross-functional technical teams to bridge business requirements and production engineering solutions.
-            </p>
-            <p>
-                <strong>Engagement:</strong> Led technical updates, triaged real-time data incidents, gathered pipeline requirements, and coordinated multi-environment testing and deployment activities via Azure DevOps.
-            </p>
-        </div>
-
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="Mateen Ul Hassan, home">mateen<span class="brand-dot">.</span><span class="brand-sub"> / data engineer</span></a>
+      <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">☰</button>
+      <nav id="site-nav" class="nav" aria-label="Main navigation">
+        <a href="#about">About</a><a href="#experience">Experience</a><a href="#case-studies">Case studies</a><a href="#projects">Projects</a><a href="#skills">Skills</a>
+        <a class="nav-contact" href="mailto:mateenraj0071@gmail.com">Get in touch <span aria-hidden="true">↗</span></a>
+      </nav>
     </div>
-</section>
+  </header>
 
-<section id="projects">
-    <h2>Featured Open-Source Projects</h2>
+  <main id="main">
+    <section class="hero wrap" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="status-dot"></span> DATA ENGINEERING · CLOUD & RELIABILITY</div>
+        <h1 id="hero-title">Turning complex data into <em>reliable systems.</em></h1>
+        <p class="hero-intro">I'm <strong>Mateen Ul Hassan</strong>, a Data Engineer working across Azure, Snowflake, Databricks, and SQL. I build automated data pipelines, identify quality issues before they spread, and make operational data more dependable.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#case-studies">See my work <span aria-hidden="true">↗</span></a><a class="btn btn-secondary" href="Mateen_Ul_Hassan_Resume.pdf" download>Download résumé ↓</a></div>
+        <div class="hero-meta"><span><b>Based in</b> Lahore, Pakistan</span><span><b>Current role</b> Associate Data Engineer · Alpha Bridge Consulting</span></div>
+      </div>
+      <div class="hero-visual" aria-label="Illustrative data pipeline flow">
+        <div class="visual-top"><span class="mono">SYSTEM OVERVIEW</span><span class="online"><span class="status-dot"></span> VALIDATED FLOW</span></div>
+        <div class="pipeline-node"><span class="node-icon">01</span><div><b>Source data</b><small>Files · SQL Server · Operational feeds</small></div><span class="node-tag">INGEST</span></div>
+        <div class="flow-line"><span></span></div>
+        <div class="pipeline-node"><span class="node-icon">02</span><div><b>Transformation</b><small>ADF · Databricks · PySpark</small></div><span class="node-tag">PROCESS</span></div>
+        <div class="flow-line"><span></span></div>
+        <div class="pipeline-node"><span class="node-icon">03</span><div><b>Quality gates</b><small>Business rules · Schema checks · Quarantine</small></div><span class="node-tag green">VERIFY</span></div>
+        <div class="flow-line"><span></span></div>
+        <div class="pipeline-node"><span class="node-icon">04</span><div><b>Trusted analytics</b><small>Snowflake · SQL · Power BI</small></div><span class="node-tag">DELIVER</span></div>
+        <p class="visual-caption">The principle behind my work: detect issues upstream, deliver confidence downstream.</p>
+      </div>
+    </section>
 
-    <div class="grid">
+    <section class="section section-alt" id="about">
+      <div class="wrap about-layout"><div><p class="section-kicker">01 / ABOUT</p><h2>Engineering beyond <span class="muted">the happy path.</span></h2></div>
+      <div class="about-content"><p>I focus on the part of data engineering that determines whether a system can be trusted: handling inconsistent source files, enforcing business rules, investigating failed jobs, and building transformations that are understandable and maintainable.</p><p>At Alpha Bridge Consulting, I've worked on restaurant workforce data and US healthcare data platforms. My work spans hands-on pipeline development, data validation, SQL troubleshooting, and collaboration with client technical teams to resolve production issues.</p><div class="about-chips"><span>Cloud ELT / ETL</span><span>Data reliability</span><span>Root-cause analysis</span><span>Analytics engineering</span></div></div></div>
+    </section>
 
-        <div class="card">
-            <h3>Cloud ELT Pipeline (Snowflake, dbt, Power BI)</h3>
-            <p>
-                Built a production-grade cloud ELT analytics stack. Raw data is loaded into Snowflake, transformed modularly using <strong>dbt</strong> (data build tool), and validated using automated dbt data assertion tests. Output models feed directly into Power BI to deliver clean, trusted business dashboards.
-            </p>
-        </div>
+    <section class="section" id="experience"><div class="wrap"><p class="section-kicker">02 / EXPERIENCE</p><div class="section-heading"><h2>Where I've made an impact.</h2><p>Real delivery work, with the problem, engineering contribution, and outcome clearly separated.</p></div>
+      <div class="timeline">
+        <article class="timeline-item"><div class="timeline-date">OCT 2025 — PRESENT</div><div class="timeline-body"><div class="role-heading"><div><h3>Associate Data Engineer</h3><p class="company">Alpha Bridge Consulting · Lahore, Pakistan</p></div><span class="pill">Current</span></div><p>Develop and support cloud data workflows across Azure, Databricks, Snowflake, SQL Server, and Mage AI. Work directly with client teams on validation requirements, production troubleshooting, incident analysis, and release coordination.</p><div class="role-tags"><span>Azure Data Factory</span><span>Databricks</span><span>Snowflake</span><span>Mage AI</span><span>SQL</span><span>Azure DevOps</span></div></div></article>
+        <article class="timeline-item"><div class="timeline-date">JUL — SEP 2025</div><div class="timeline-body"><div class="role-heading"><div><h3>Data Analyst Intern</h3><p class="company">Gulabzai Group · Lahore, Pakistan</p></div></div><p>Cleaned and structured operational datasets with Python and SQL, modeled reporting-ready fact and dimension tables, and created Power BI dashboards to make sales performance easier to analyze.</p><div class="role-tags"><span>Python</span><span>Pandas</span><span>PostgreSQL</span><span>Star schema</span><span>Power BI</span></div></div></article>
+      </div></div></section>
 
-        <div class="card">
-            <h3>AskMyDocs RAG Chatbot (Python, FAISS, Streamlit)</h3>
-            <p>
-                Developed an AI-powered document retrieval application. Uses Python to parse complex unstructured documentation, vector embeddings stored in a <strong>FAISS</strong> vector index for semantic context retrieval, and an interactive <strong>Streamlit</strong> interface for natural-language Q&A.
-            </p>
-        </div>
+    <section class="section section-alt" id="case-studies"><div class="wrap"><p class="section-kicker">03 / SELECTED ENGINEERING WORK</p><div class="section-heading"><h2>Problems solved. <span class="muted">Systems improved.</span></h2><p>Selected client engagements, rewritten as engineering case studies rather than a list of tools.</p></div>
+      <div class="cases">
+        <article class="case-card featured"><div class="case-top"><span class="case-index">CASE STUDY 01</span><span class="case-domain">Panda Restaurant Group · Workforce data</span></div><h3>Making labor-shift events trustworthy</h3><p class="case-lead">Shift feeds carried <code>ADDED</code>, <code>MODIFIED</code>, and <code>DELETED</code> events. The challenge was distinguishing valid lifecycle changes from logically inconsistent records.</p><div class="case-columns"><div><h4>The challenge</h4><p>A modified shift with no prior add, an update with no actual change, or a deleted shift that still appears active can make downstream workforce reporting unreliable.</p></div><div><h4>What I did</h4><p>Analyzed event sequences and developed business-rule validation logic to identify missing initial events, unchanged modifications, and inconsistent deletion states. Investigated anomalies using source data and SQL-based checks.</p></div></div><div class="impact"><span class="impact-label">ENGINEERING IMPACT</span><p>Made shift-data exceptions easier to detect and investigate before they affected downstream consumers, supporting more reliable workforce datasets.</p></div><div class="stack">SQL <i>·</i> Data validation <i>·</i> Event lifecycle analysis</div></article>
+        <article class="case-card"><div class="case-top"><span class="case-index">CASE STUDY 02</span><span class="case-domain">Panda Restaurant Group · Ingestion</span></div><h3>Automating ingestion from file arrival to SQL tables</h3><p class="case-lead">A dynamic pipeline for processing incoming files without repeating the same manual work for every delivery.</p><div class="case-columns"><div><h4>The challenge</h4><p>Incoming files required filename checks, consistent column structures, traceable archival, and a safe path for failed files.</p></div><div><h4>What I built</h4><p>Built an event-triggered Azure Data Factory workflow that starts when files arrive in ADLS Gen2. Databricks notebooks standardize column names; valid files proceed to processed storage and SQL Server tables, original files are archived, and failures are isolated in quarantine.</p></div></div><div class="impact"><span class="impact-label">ENGINEERING IMPACT</span><p>Reduced manual handling and established a repeatable ingestion flow with clearer processing outcomes and easier failure investigation.</p></div><div class="stack">ADF <i>·</i> ADLS Gen2 <i>·</i> Databricks <i>·</i> PySpark <i>·</i> SQL Server</div></article>
+        <article class="case-card"><div class="case-top"><span class="case-index">CASE STUDY 03</span><span class="case-domain">Panda Restaurant Group · SQL reliability</span></div><h3>Resolving ambiguous “latest shift” records</h3><p class="case-lead">A stored procedure needed to identify the latest labor-shift entry, but duplicate and overlapping records made the ordering unreliable.</p><div class="case-columns"><div><h4>The challenge</h4><p>Multiple records could compete for the same sequence position, making it difficult to determine which shift state should be treated as the latest.</p></div><div><h4>What I did</h4><p>Assisted in reviewing and optimizing the procedure's record-selection logic, including how row numbering, ordering, and duplicates were handled.</p></div></div><div class="impact"><span class="impact-label">ENGINEERING IMPACT</span><p>Helped improve the clarity and consistency of latest-record selection in a critical workforce-data workflow.</p></div><div class="stack">SQL Server <i>·</i> T-SQL <i>·</i> Stored procedures <i>·</i> Deduplication</div></article>
+        <article class="case-card"><div class="case-top"><span class="case-index">CASE STUDY 04</span><span class="case-domain">Integra Connect · Healthcare</span></div><h3>Finding anomalies earlier in the healthcare data flow</h3><p class="case-lead">Quality issues were most useful to catch in the raw layer—not after they reached clinical operations consumers.</p><div class="case-columns"><div><h4>The challenge</h4><p>Potentially problematic healthcare records needed to be surfaced upstream so teams could investigate issues before downstream use.</p></div><div><h4>What I did</h4><p>Studied the project's IC0 raw-layer architecture and updated a Snowflake view responsible for identifying and reporting data anomalies. Also supported ticket-level validation and QA.</p></div></div><div class="impact"><span class="impact-label">ENGINEERING IMPACT</span><p>Supported earlier visibility into data-quality exceptions and reduced dependence on downstream discovery of source-data issues.</p></div><div class="stack">Snowflake <i>·</i> SQL <i>·</i> IC0 raw layer <i>·</i> Data QA</div></article>
+        <article class="case-card"><div class="case-top"><span class="case-index">CASE STUDY 05</span><span class="case-domain">Healthcare · Production operations</span></div><h3>Keeping production pipelines observable and supportable</h3><p class="case-lead">Reliable data delivery requires more than a successful pipeline run: it requires validation, investigation, and controlled changes.</p><div class="case-columns"><div><h4>The challenge</h4><p>Production data workflows need timely issue triage, dependable releases, and communication across engineering and client teams.</p></div><div><h4>What I did</h4><p>Supported data reliability work using Mage AI orchestration, Snowflake transformations, ADF workflows, Azure DevOps release processes, and DataOps Studio. Investigated failures and validated ticket-specific changes.</p></div></div><div class="impact"><span class="impact-label">ENGINEERING IMPACT</span><p>Contributed to more structured troubleshooting, validation, and release coordination for healthcare data workflows.</p></div><div class="stack">Mage AI <i>·</i> Snowflake <i>·</i> ADF <i>·</i> Azure DevOps <i>·</i> DataOps Studio</div></article>
+        <article class="case-card"><div class="case-top"><span class="case-index">CASE STUDY 06</span><span class="case-domain">Gulabzai Group · Business intelligence</span></div><h3>Converting raw sales files into decision-ready reporting</h3><p class="case-lead">Operational spreadsheets and CSV files needed a consistent analytical structure before they could support useful dashboards.</p><div class="case-columns"><div><h4>The challenge</h4><p>Raw sales data was fragmented and required cleanup, modeling, and business-friendly presentation.</p></div><div><h4>What I did</h4><p>Used Python and Pandas to clean source files, loaded structured data into PostgreSQL, organized fact and dimension tables using a star schema, and built interactive Power BI dashboards with 10+ operational KPIs.</p></div></div><div class="impact"><span class="impact-label">ENGINEERING IMPACT</span><p>Made sales trends and operational performance easier for stakeholders to explore through centralized, repeatable reporting.</p></div><div class="stack">Python <i>·</i> Pandas <i>·</i> PostgreSQL <i>·</i> Data modeling <i>·</i> Power BI</div></article>
+      </div></div></section>
 
-    </div>
-</section>
+    <section class="section" id="projects"><div class="wrap"><p class="section-kicker">04 / PERSONAL PROJECTS</p><div class="section-heading"><h2>Built to explore. <span class="muted">Designed to scale.</span></h2><p>Projects demonstrating the same focus on clean data models and useful interfaces.</p></div><div class="project-grid">
+      <article class="project-card"><div class="project-symbol" aria-hidden="true">↗</div><span class="project-type">DATA PLATFORM PROJECT</span><h3>Cloud ELT Analytics Stack</h3><p>Developed a Snowflake-based analytics pipeline with layered dbt models, tests for uniqueness, nulls, and relationships, and Power BI reporting on curated data.</p><div class="project-outcome"><b>What it demonstrates</b><span>Modular transformation design, automated data tests, and analytics-ready modeling.</span></div><div class="stack">Snowflake <i>·</i> dbt <i>·</i> SQL <i>·</i> Power BI</div></article>
+      <article class="project-card"><div class="project-symbol" aria-hidden="true">⌁</div><span class="project-type">AI / RETRIEVAL PROJECT</span><h3>AskMyDocs — RAG Chatbot</h3><p>Built a document question-answering app that extracts and chunks PDF text, creates embeddings, retrieves relevant context with FAISS, and serves answers through Streamlit.</p><div class="project-outcome"><b>What it demonstrates</b><span>Unstructured-data processing, semantic search, and end-user application delivery.</span></div><div class="stack">Python <i>·</i> FAISS <i>·</i> Embeddings <i>·</i> Streamlit</div></article>
+      </div></div></section>
 
-<section id="skills">
-    <h2>Technical Ecosystem</h2>
-    <div class="skills">
-        <span>Python</span><span>SQL</span><span>Bash</span>
-        <span>ETL / ELT</span><span>Data Modeling</span><span>Data Quality Engine</span>
-        <span>Azure Data Factory (ADF)</span><span>ADLS Gen2</span><span>Azure Synapse</span>
-        <span>AWS S3</span><span>Databricks</span><span>Apache Spark</span>
-        <span>PySpark</span><span>Spark SQL</span><span>Snowflake</span>
-        <span>SQL Server</span><span>PostgreSQL</span><span>GoogleSQL</span>
-        <span>Mage AI</span><span>dbt</span><span>Azure DevOps</span>
-        <span>Git</span><span>CI/CD</span><span>Docker</span>
-        <span>Power BI</span><span>Pandas</span><span>Datasite</span>
-        <span>RAG</span><span>FAISS</span><span>Streamlit</span>
-    </div>
-</section>
+    <section class="section section-alt" id="skills"><div class="wrap"><p class="section-kicker">05 / TOOLKIT</p><div class="section-heading"><h2>Tools behind the work.</h2><p>Grouped by how I use them—not just an alphabetized technology list.</p></div><div class="skills-grid">
+      <div class="skill-group"><h3>Cloud & orchestration</h3><div class="skill-list"><span>Azure Data Factory</span><span>ADLS Gen2</span><span>Azure Synapse</span><span>Mage AI</span><span>AWS S3 / Glue</span></div></div>
+      <div class="skill-group"><h3>Processing & development</h3><div class="skill-list"><span>Python</span><span>SQL / T-SQL</span><span>PySpark</span><span>Databricks</span><span>Apache Spark</span><span>Pandas</span></div></div>
+      <div class="skill-group"><h3>Warehousing & analytics</h3><div class="skill-list"><span>Snowflake</span><span>SQL Server</span><span>PostgreSQL</span><span>dbt</span><span>Star schema</span><span>Power BI</span></div></div>
+      <div class="skill-group"><h3>Engineering practices</h3><div class="skill-list"><span>Data validation</span><span>ETL / ELT</span><span>Git</span><span>Azure DevOps</span><span>CI/CD</span><span>Docker</span><span>RAG / FAISS</span></div></div>
+      </div><div class="education"><div><span class="education-label">EDUCATION</span><strong>BS Data Science</strong><span>University of Central Punjab · 2021–2025</span></div><div><span class="education-label">CERTIFICATION</span><strong>Microsoft Certified: Azure AI Fundamentals</strong><span>AI-900</span></div></div></div></section>
 
-<footer>© <span id="year"></span> Mateen Ul Hassan | Designed for Global & Remote Data Engineering Roles</footer>
-
-<script>
+    <section class="section contact-section" id="contact"><div class="wrap contact-layout"><div><p class="section-kicker">06 / CONTACT</p><h2>Let's build data systems <em>people can trust.</em></h2><p>Open to conversations about data engineering, cloud platforms, and meaningful technical challenges.</p></div><div class="contact-actions"><a class="btn btn-primary" href="mailto:mateenraj0071@gmail.com">Email me <span aria-hidden="true">↗</span></a><a class="email-link" href="mailto:mateenraj0071@gmail.com">mateenraj0071@gmail.com</a><a class="resume-link" href="Mateen_Ul_Hassan_Resume.pdf" download>Download résumé ↓</a></div></div></section>
+  </main>
+  <footer class="footer"><div class="wrap footer-inner"><span>© <span id="year"></span> Mateen Ul Hassan</span><span>Built around data, quality & clarity.</span><a href="#top">Back to top ↑</a></div></footer>
+  <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav');
+    toggle.addEventListener('click', () => { const expanded = toggle.getAttribute('aria-expanded') === 'true'; toggle.setAttribute('aria-expanded', String(!expanded)); nav.classList.toggle('open', !expanded); });
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }));
+  </script>
 </body>
 </html>
